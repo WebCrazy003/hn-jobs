@@ -18,6 +18,17 @@ Open <http://127.0.0.1:3000>, visit Settings, and paste the current HN thread UR
 
 The SQLite database is stored at `data/hn-jobs.sqlite`. Fetching stops when the Node process stops.
 
+## Background start and stop
+
+The macOS helper scripts start the app in the background, record only its exact process ID, and stop that recorded process safely:
+
+```bash
+./scripts/start-local.sh
+./scripts/stop-local.sh
+```
+
+The start helper opens the app in the default browser. Runtime output is stored at `data/hn-jobs.log`.
+
 ## Checks
 
 ```bash
