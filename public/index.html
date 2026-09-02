@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>HN Job Fetcher</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="/jobs" data-route>
+          <span class="brand-mark">Y</span>
+          <span>HN Job Fetcher</span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="/jobs" data-route>Jobs</a>
+          <a href="/settings" data-route>Settings</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section id="jobs-view" class="view" aria-labelledby="jobs-heading">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Monthly Who is hiring?</p>
+            <h1 id="jobs-heading">Jobs</h1>
+            <p id="jobs-summary" class="muted">Loading jobs…</p>
+          </div>
+          <div id="sync-pill" class="sync-pill">Checking status…</div>
+        </div>
+
+        <form id="filters" class="filter-panel">
+          <label>Status
+            <select id="filter-status" name="status">
+              <option value="unseen">Unseen</option>
+              <option value="seen">Seen</option>
+              <option value="all">All</option>
+            </select>
+          </label>
+          <label>From
+            <input id="filter-from" name="from" type="date" />
+          </label>
+          <label>To
+            <input id="filter-to" name="to" type="date" />
+          </label>
+          <label>Thread
+            <select id="filter-thread" name="thread">
+              <option value="all">All imported threads</option>
+            </select>
+          </label>
+          <label>Sort
+            <select id="filter-sort" name="sort">
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+          </label>
+          <button id="clear-filters" type="button" class="button secondary">Clear</button>
+        </form>
+
+        <button id="new-jobs-notice" class="new-jobs-notice hidden" type="button">New jobs available — return to page 1</button>
+        <div id="jobs-error" class="notice error hidden" role="alert"></div>
+        <div id="jobs-list" class="job-list" aria-live="polite"></div>
+        <nav id="pagination" class="pagination" aria-label="Job pages"></nav>
+      </section>
+
+      <section id="settings-view" class="view hidden" aria-labelledby="settings-heading">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Configuration</p>
+            <h1 id="settings-heading">Settings</h1>
+            <p class="muted">Fetching runs every five minutes while this local project is running.</p>
+          </div>
+        </div>
+
+        <div class="settings-grid">
+          <form id="thread-form" class="panel">
+            <h2>Active HN thread</h2>
+            <p class="muted">Paste the current monthly “Who is hiring?” item URL. Saving starts an import immediately.</p>
+            <label>Hacker News URL
+              <input id="thread-url" type="url" required placeholder="https://news.ycombinator.com/item?id=…" />
+            </label>
+            <div id="thread-error" class="field-error hidden" role="alert"></div>
+            <div class="actions">
+              <button id="save-thread" class="button primary" type="submit">Save and sync</button>
+              <button id="sync-now" class="button secondary" type="button">Sync now</button>
+            </div>
+          </form>
+
+          <section class="panel" aria-labelledby="sync-status-heading">
+            <h2 id="sync-status-heading">Sync status</h2>
+            <dl id="settings-status" class="status-list"></dl>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
