@@ -166,10 +166,6 @@ function makeJobCard(job) {
   appendCappedChips(chips, "role", job.roles || []);
   appendCappedChips(chips, "tech", job.technologies || []);
 
-  const content = document.createElement("div");
-  content.className = "job-content";
-  content.innerHTML = job.content_preview_html;
-
   const actions = document.createElement("div");
   actions.className = "card-actions";
   const seenLabel = document.createElement("label");
@@ -190,7 +186,6 @@ function makeJobCard(job) {
 
   card.append(top);
   if (chips.childElementCount) card.append(chips);
-  if (job.content_preview_html) card.append(content);
   card.append(actions);
   return card;
 }

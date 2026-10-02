@@ -121,10 +121,6 @@ input:focus, select:focus { border-color: var(--accent); }
 .chip.location { color: var(--green); background: var(--green-soft); }
 .chip.role { color: var(--blue); background: var(--blue-soft); }
 .chip.tech { color: var(--purple); background: var(--purple-soft); }
-.job-content { max-width: 82ch; color: #353b35; font-size: 0.94rem; line-height: 1.65; }
-.job-content p, .job-content ul, .job-content ol, .job-content pre, .job-content blockquote { margin: 0.8em 0; }
-.job-content a { color: #345b94; overflow-wrap: anywhere; }
-.job-content pre { overflow-x: auto; padding: 12px; border-radius: 8px; background: var(--surface-soft); }
 .card-actions { display: flex; align-items: center; gap: 10px; margin-top: 20px; padding-top: 17px; border-top: 1px solid #ecece7; }
 .seen-control { display: inline-flex; align-items: center; gap: 8px; min-height: 39px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.84rem; font-weight: 750; cursor: pointer; }
 .seen-control input { width: 16px; min-height: auto; accent-color: var(--accent); }
